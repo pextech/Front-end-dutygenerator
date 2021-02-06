@@ -22,7 +22,7 @@ const Login = (props) => {
   const [token, setToken] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState(false);
-  console.log(email,password);
+
 
   const newState = useSelector((state) => state);
   const [submitted, setSubmitted] = useState(false);
@@ -39,11 +39,17 @@ const Login = (props) => {
     return () => clearTimeout(timer);
   }, []);
 
-
+  const axiosInstance =  axios.create({
+    baseURL: "https://salbum-api.herokuapp.com/",
+    timeout: 5000,
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    }
+  }); 
 
   const login = async (email,password) => {
-    axios.post('https://salbum-api.herokuapp.com/login', { email, password }).then((response) => {
-        console.log(response);
+    axiosInstance.post('https://salbum-api.herokuapp.com/login', { email, password }).then((response) => {
       setToken(response.data.token);
       setMessage(response.data.message);
       setError(false);
@@ -106,7 +112,7 @@ const Login = (props) => {
       </section>
       )}
       {toSign === true && <Signup /> }
-      {logged && <Dashboard />}
+      {logged && <Dashboard token={token}/>}
       
       
 {/* 

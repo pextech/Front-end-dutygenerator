@@ -24,7 +24,7 @@
 // // console.log(book);
 
   
-// const handleSubmit = (e) => {
+//  const handleSubmit = (e) => {
 //     e.preventDefault();
 //     dispatch(addBook(title,author));
 //     setTitle('');
@@ -46,8 +46,8 @@
 //   ) : (
 //     <div className="empty">No books to read. Hello free time :).</div>
 //   )}
-//       <form onSubmit={handleSubmit}>
-//       <input type="text" placeholder="book title" value={title}
+//   <form onSubmit={handleSubmit}>
+//   <input type="text" placeholder="book title" value={title}
 //         onChange={(e) => setTitle(e.target.value)} required />
 //       <input type="text" placeholder="author name" value={author}
 //         onChange={(e) => setAuthor(e.target.value)} required />
