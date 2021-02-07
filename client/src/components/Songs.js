@@ -2,10 +2,8 @@ import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import Login from './Login';
-import Songs from './Songs';
 
-function Dashboard({token}) {
-
+function Songs({token,id}) {
   const newState = useSelector((state) => state);
 const dispatch = useDispatch();
 const [toLog, setToLog] = useState(false);
@@ -15,10 +13,10 @@ const [error, setError] = useState(false);
 const [album, setAblum] = useState([]);
 
 const [songs,setSongs] = useState([]);
+console.log(songs);
 const [addAlbum, setAddAlbum]=useState('');
 const [addSong, setAddSong]= useState('');
 const [clickAlbum, setClickAlbum]= useState(false);
-const [clickId,setClickId] = useState(0);
 const [submitted, setSubmitted] = useState(false);
 const [formSubmit, setFormSubmit] = useState(false);
 
@@ -26,7 +24,7 @@ const [formSubmit, setFormSubmit] = useState(false);
 
 
 
-    const add = async (addAlbum) => {
+    const add = async (addSong) => {
       const axiosInstance =  axios.create({
         baseURL: "https://salbum-api.herokuapp.com/albums",
         timeout: 5000,
@@ -35,16 +33,16 @@ const [formSubmit, setFormSubmit] = useState(false);
           'Content-Type': 'application/json'
         }
       }); 
-      axiosInstance.post('https://salbum-api.herokuapp.com/albums', {name:addAlbum},{  headers: {
+      axiosInstance.post(`https://salbum-api.herokuapp.com/albums/${id}/songs`, {name:addSong},{  headers: {
         'authorization': token,
         'Accept' : 'application/json',
         'Content-Type': 'application/json'
     }}).then((response) => {
           // const newAlbum = Object.entries(response.data.album);
-          console.log(album.concat(response.data.album));
+          console.log(album.concat(response.data.songs));
 
         // setAddAlbum(response.data.token);
-        setAblum(album.concat(response.data.album));
+        setAblum(album.concat(response.data.songs));
         setMessage(response.data.message);
         setError(false);
         setSubmitted(true);
@@ -58,15 +56,16 @@ const handleSubmit = (e) => {
     e.preventDefault();
     setFormSubmit(true);
 
-    if (addAlbum) {
+    if (addSong) {
     //   dispatch(reset(email));
       // dispatch(forgotPassword(email));
      setAddAlbum('');
-      add(addAlbum);
+      add(addSong);
       // dispatch(forgotPassword(newState.reset.email));
     }
 
 }
+
 
 
 
@@ -79,17 +78,20 @@ useEffect(()=>{
       'Content-Type': 'application/json'
     }
   }); 
-  axiosInstance.get('https://salbum-api.herokuapp.com/albums/',  {  headers: {
+  axiosInstance.get(`https://salbum-api.herokuapp.com/albums/${id}/songs/`,  {  headers: {
     'authorization': token,
     'Accept' : 'application/json',
     'Content-Type': 'application/json'
 }}).then((response) => {
-    // console.log(response);
-    const albumData = response.data.userAlbums[0].albums;
+      
+    const songData = response.data;
+    console.log(response)
       setMessage(response.data.message);
       setError(false);
       setSubmitted(true);
-      setAblum(albumData);
+    //   setAblum(songData);
+    //   setSongs(songData);
+
       return response;
     }).catch(() => {
       setError(true);
@@ -100,25 +102,21 @@ useEffect(()=>{
 
 },[]);
 
-const entries = Object.entries(album);
+const entries = Object.entries(songs);
 
   return (
     <div>
     { toLog === true  && <Login /> }
-    {clickAlbum === true && <Songs id={clickId} token={token}/>}
-    {clickAlbum === false && token !== '' && token !== null &&  (
+    {token !== '' && token !== null && (
       <>
-      {album.length > 0 ? (
+      {songs.length > 0 ? (
     <div className="book-list">
       <ul>
       
-         {entries.map(albums => { 
+         {entries.map(songList => { 
           return( 
-          <li key={albums[1].id} className="flex flex-row justify-between" >
-          <div className="title" onClick={()=>{
-            setClickAlbum(true);
-            setClickId(albums[1].id);
-          }}>{albums[1].name}</div>
+          <li key={songList[1].id} className="flex flex-row justify-between" >
+          <div className="title">{songList[1].name}</div>
            <ul>
              <div onClick={() => {
                         const axiosInstance =  axios.create({
@@ -129,18 +127,18 @@ const entries = Object.entries(album);
                             'Content-Type': 'application/json'
                           }
                         }); 
-                        axiosInstance.delete(`https://salbum-api.herokuapp.com/albums/${albums[1].id}`,{  headers: {
+                        axiosInstance.delete(`https://salbum-api.herokuapp.com/albums/${id}/songs/${songList[1].id}`,{  headers: {
                           'authorization': token,
                           'Accept' : 'application/json',
                           'Content-Type': 'application/json'
                         }}).then((response) => {
-                            const newAlbum = album ? album.filter((item) => item.id !== album[1].id) : [];
+                            const newSongs = album ? album.filter((item) => item.id !== album[1].id) : [];
                             console.log(album.filter((item) => item.id !== album[1].id));
-                            console.log(!(album.includes(albums[1].id)))
+                            console.log(!(album.includes(songList[1].id)))
 
                           // setAddAlbum(response.data.token);
                    
-                          setAblum(newAlbum);
+                          setAblum(newSongs);
                           setMessage(response.data.message);
                           setError(false);
                           setSubmitted(true);
@@ -160,13 +158,13 @@ const entries = Object.entries(album);
       </ul>
     </div>
   ) : (
-    <div className="empty">No Albums available for you:).</div>
+    <div className="empty">No Songs available in this album :).</div>
   )}
 
     <form onSubmit={handleSubmit}>
-     <input type="text" name="album" placeholder="Album Name" value={addAlbum}
-        onChange={(e) => setAddAlbum(e.target.value)} className='bg-white focus:bg-white border-white shadow-lg ' required />
-      <input type="submit" value="add Album"/>
+     <input type="text" name="album" placeholder="Song Name" value={addSong}
+        onChange={(e) => setAddSong(e.target.value)} className='bg-white focus:bg-white border-white shadow-lg ' required />
+      <input type="submit" value="add Song"/>
     </form>
   {/* <button className="w-full sm:w-full border-primary-100 bg-primary-100 rounded content-center center shadow-md h-10 text-white">Go back</button> */}
       </>
@@ -178,4 +176,4 @@ const entries = Object.entries(album);
   }
 
 
-export default Dashboard;
+export default Songs;

@@ -37,10 +37,10 @@ body {
   cursor: pointer;
   margin: 10px 0;
 }
-.book-list li:hover{
+/* .book-list .title:hover{
   opacity: 0.7;
   text-decoration: line-through;
-}
+} */
 .book-list .title{
   font-weight: bold;
   color: #fff;

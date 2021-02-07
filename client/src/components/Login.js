@@ -73,7 +73,7 @@ const Login = (props) => {
     <>
       {/* <HomeNavComponent /> */}
       {loading && error === false && <LoginSkeleton />}
-      {!loading  &&  !toSign && !logged &&(
+      {!loading  &&  !toSign && !logged && token === '' &&(
       <section className="bg-gray-100 p-6">
         <div className="bg-white rounded-2xl items-center content-center shadow-md p-6 sm:p-2">
           <div className="items-center md:m-6 md:p-6 xs:m-2 xs:p-2">
