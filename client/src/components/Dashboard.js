@@ -179,6 +179,9 @@ function Dashboard({ token }) {
                             draggable: true,
                             progress: undefined,
                           });
+                          if (album.length <= 1) {
+                            setAblum([]);
+                          }
                           const newAlbum = album ? album.filter((item) => item.id !== album[1].id) : [];
 
                           // setAddAlbum(response.data.token);
