@@ -1,15 +1,13 @@
-import logo from './logo.svg';
+/* eslint-disable react/react-in-jsx-scope */
 import './App.css';
 import Navbar from './components/Navbar';
-import Book from './components/Book';
 import Signup from './components/Signup';
 
 function App() {
   return (
     <div className="App">
-   <Navbar />
-       {/* <Book /> */}
-       <Signup />
+      <Navbar />
+      <Signup />
     </div>
   );
 }

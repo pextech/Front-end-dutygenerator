@@ -1,17 +1,14 @@
+/* eslint-disable no-shadow */
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { connect, useDispatch, useSelector } from 'react-redux';
-// import FooterOne from '../FooterOne';
-// import HomeNavComponent from '../HomeNavComponent';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import SignupSkeleton from './SignupSkeleton';
 import Login from './Login';
-// import { forgotPassword } from '../../store/actions/forgot';
-
-// import {
-//   reset,
-// } from '../../store/actions/index';
-// import ChangePassword from './ChangePassword';
 
 const Signup = (props) => {
   const [email, setEmail] = useState('');
@@ -27,7 +24,7 @@ const Signup = (props) => {
   const [submitted, setSubmitted] = useState(false);
   const [formSubmit, setFormSubmit] = useState(false);
   const dispatch = useDispatch();
-  // console.log(newState.reset.email);
+
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -38,11 +35,29 @@ const Signup = (props) => {
     return () => clearTimeout(timer);
   }, []);
 
+  const signup = async (name, email, password) => {
+    if (password.length < 6) {
+      toast.error('minimum password lenth is 6 digits', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    axios.post('https://salbum-api.herokuapp.com/signUp', { fullnames: name, email, password }).then((response) => {
+      toast('Created account, now login', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
-
-  const signup = async (name,email,password) => {
-    axios.post('https://salbum-api.herokuapp.com/signUp', { fullnames:name, email, password }).then((response) => {
-        console.log(response);
       setToken(response.data.token);
       setMessage(response.data.message);
       setError(false);
@@ -58,7 +73,7 @@ const Signup = (props) => {
     <>
       {/* <HomeNavComponent /> */}
       {loading && <SignupSkeleton />}
-      {!loading  && !submitted && !toLog &&(
+      {!loading && !submitted && !toLog && (
       <section className="bg-gray-100 p-6">
         <div className="bg-white rounded-2xl items-center content-center shadow-md p-6 sm:p-2">
           <div className="items-center md:m-6 md:p-6 xs:m-2 xs:p-2">
@@ -66,14 +81,14 @@ const Signup = (props) => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                //  props.OnReset(email); 
+                //  props.OnReset(email);
                 //  setSubmitted(true);
-                 setFormSubmit(true);
+                setFormSubmit(true);
 
                 if (email) {
                 //   dispatch(reset(email));
                   // dispatch(forgotPassword(email));
-                  signup(name,email,password);
+                  signup(name, email, password);
                   // dispatch(forgotPassword(newState.reset.email));
                 }
               }}
@@ -83,24 +98,24 @@ const Signup = (props) => {
                 <h2 className="text-gray-700 xs:text-xs">Enter your Info</h2>
               </div>
               <div className="m-3 p-3 flex flex-col justify-center items-center">
-              {email && password && formSubmit === true && error !== true && message && <h6 className="text-primary-100 text-xs mb-2">{message}</h6>}
-              {error === true && submitted === false && <h6 className="text-red-500 text-xs mb-2">User is already registered</h6>}
+                {email && password && formSubmit === true && error !== true && message && <h6 className="text-primary-100 text-xs mb-2">{message}</h6>}
                 <input type="text" name="names" placeholder="Your name" value={name} onChange={(e) => { setName(e.target.value); }} className="w-1/2 sm:w-full border-primary-100 rounded content-center p-4 m-4 center shadow-md h-10 text-primary-100" />
                 <input type="email" name="email" placeholder="Your email" value={email} onChange={(e) => { setEmail(e.target.value); }} className="w-1/2 sm:w-full border-primary-100 rounded content-center p-4 m-4 center shadow-md h-10 text-primary-100" />
                 <input type="password" name="password" placeholder="Your password" value={password} onChange={(e) => { setPassword(e.target.value); }} className="w-1/2 sm:w-full border-primary-100 rounded content-center p-4 m-4 center shadow-md h-10 text-primary-100" />
                 <button type="submit" value="Submit" name="submit" className="w-full sm:w-full border-primary-100 bg-primary-100 m-4 rounded content-center center shadow-md h-10 text-white">Sign-up</button>
                 <h6 className="text-primary-100 text-xs mb-2">or</h6>
-                 <button onClick={(e) => { setToLog(true)}} className="w-full sm:w-full border-primary-100 bg-primary-100 m-4 rounded content-center center shadow-md h-10 text-white">Login</button>
+                <button onClick={(e) => { setToLog(true); }} className="w-full sm:w-full border-primary-100 bg-primary-100 m-4 rounded content-center center shadow-md h-10 text-white">Login</button>
               </div>
             </form>
           </div>
         </div>
+        <ToastContainer />
       </section>
       )}
-      { submitted === true  && <Login /> }
-      { toLog === true  && <Login /> }
+      { submitted === true && <Login /> }
+      { toLog === true && <Login /> }
 
-{/* 
+      {/*
       <FooterOne /> */}
     </>
   );
