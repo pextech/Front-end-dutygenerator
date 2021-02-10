@@ -142,7 +142,8 @@ function Songs({ token, id, albumName }) {
         ) : (
           <div className="empty">
             No Songs available in
-            {albumName}
+            {' '}
+            {` ${albumName}`}
             {' '}
             album :).
           </div>

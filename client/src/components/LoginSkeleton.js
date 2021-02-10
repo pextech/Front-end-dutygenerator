@@ -12,11 +12,11 @@ const LoginSkeleton = () => (
             <h2 className="text-gray-700 xs:text-xs"><Skeleton height={30} width={150} /></h2>
           </div>
           <div className="m-3 p-3 flex flex-col justify-center items-center">
-            <Skeleton height={40} width={600} />
-            <Skeleton height={40} width={600} />
-            <Skeleton height={40} width={600} />
-            <Skeleton height={40} width={600} />
-            <Skeleton height={40} width={600} />
+            <Skeleton height={40} width={200} />
+            <Skeleton height={40} width={200} />
+            <Skeleton height={40} width={200} />
+            <Skeleton height={40} width={200} />
+            <Skeleton height={40} width={200} />
           </div>
         </form>
       </div>
