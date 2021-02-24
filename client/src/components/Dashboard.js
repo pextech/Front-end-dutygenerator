@@ -18,6 +18,7 @@ function Dashboard({ token }) {
   const [message, setMessage] = useState('');
   const [error, setError] = useState(false);
   const [duty, setDuty] = useState([]);
+  const [user, setUser] = useState('');
 
   const [dutyName, setDutyName] = useState('');
   const [addTitle, setAddTitle] = useState('');
@@ -129,6 +130,7 @@ function Dashboard({ token }) {
     }).then((response) => {
       const dutyData = response.data.userDuties[0].duties;
       setMessage(response.data.message);
+      setUser(response.data.userDuties[0].name);
       setError(false);
       setSubmitted(true);
       setDuty(dutyData);
@@ -249,7 +251,15 @@ function Dashboard({ token }) {
             </ul>
           </div>
         ) : (
-          <div className="empty text-gray-800">No Duties available for you:).</div>
+          <div className="empty text-gray-800">
+            No Duties available for you
+            {' '}
+            {' '}
+            {user}
+            {' '}
+            🙃 you are free 😃
+            {' '}
+          </div>
         )}
 
         <form onSubmit={handleSubmit}>
