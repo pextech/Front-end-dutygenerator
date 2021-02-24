@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/dutygenerator/static/css/main.1ba0f665.chunk.css",
+    "main.js": "/dutygenerator/static/js/main.f7a9f097.chunk.js",
+    "main.js.map": "/dutygenerator/static/js/main.f7a9f097.chunk.js.map",
+    "runtime-main.js": "/dutygenerator/static/js/runtime-main.30288ed9.js",
+    "runtime-main.js.map": "/dutygenerator/static/js/runtime-main.30288ed9.js.map",
+    "static/css/2.c08fb880.chunk.css": "/dutygenerator/static/css/2.c08fb880.chunk.css",
+    "static/js/2.50018018.chunk.js": "/dutygenerator/static/js/2.50018018.chunk.js",
+    "static/js/2.50018018.chunk.js.map": "/dutygenerator/static/js/2.50018018.chunk.js.map",
+    "index.html": "/dutygenerator/index.html",
+    "static/css/2.c08fb880.chunk.css.map": "/dutygenerator/static/css/2.c08fb880.chunk.css.map",
+    "static/css/main.1ba0f665.chunk.css.map": "/dutygenerator/static/css/main.1ba0f665.chunk.css.map",
+    "static/js/2.50018018.chunk.js.LICENSE.txt": "/dutygenerator/static/js/2.50018018.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/dutygenerator/static/media/pic1.ac0c8b27.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.30288ed9.js",
+    "static/css/2.c08fb880.chunk.css",
+    "static/js/2.50018018.chunk.js",
+    "static/css/main.1ba0f665.chunk.css",
+    "static/js/main.f7a9f097.chunk.js"
+  ]
+}
