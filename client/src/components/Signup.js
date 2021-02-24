@@ -3,7 +3,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { connect, useDispatch, useSelector } from 'react-redux';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,10 +19,8 @@ const Signup = (props) => {
 
   const [error, setError] = useState(false);
   const [validate, setValidate] = useState(false);
-  const newState = useSelector((state) => state);
   const [submitted, setSubmitted] = useState(false);
   const [formSubmit, setFormSubmit] = useState(false);
-  const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -47,8 +44,8 @@ const Signup = (props) => {
         progress: undefined,
       });
     }
-    axios.post('https://salbum-api.herokuapp.com/signUp', { fullnames: name, email, password }).then((response) => {
-      toast('Created account, now login', {
+    axios.post('https://dutygenerator.herokuapp.com/api/v1/signUp', { name, email, password }).then((response) => {
+      toast.dark('Created account, now login', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: true,

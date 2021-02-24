@@ -1,0 +1,3 @@
+[submodule "Duty-generator_taskforce"]
+	path = Duty-generator_taskforce
+	url = https://github.com/pextech/Duty-generator_taskforce.git

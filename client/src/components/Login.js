@@ -3,7 +3,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { connect, useDispatch, useSelector } from 'react-redux';
 
 import { ToastContainer, toast } from 'react-toastify';
 import Signup from './Signup';
@@ -20,10 +19,8 @@ const Login = (props) => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState(false);
 
-  const newState = useSelector((state) => state);
   const [submitted, setSubmitted] = useState(false);
   const [formSubmit, setFormSubmit] = useState(false);
-  const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -36,7 +33,7 @@ const Login = (props) => {
   }, []);
 
   const axiosInstance = axios.create({
-    baseURL: 'https://salbum-api.herokuapp.com/',
+    baseURL: 'https://dutygenerator.herokuapp.com/api/v1/duties',
     timeout: 5000,
     headers: {
       Authorization: token,
@@ -45,7 +42,7 @@ const Login = (props) => {
   });
 
   const login = async (email, password) => {
-    axiosInstance.post('https://salbum-api.herokuapp.com/login', { email, password }).then((response) => {
+    axiosInstance.post('https://dutygenerator.herokuapp.com/api/v1/login', { email, password }).then((response) => {
       setToken(response.data.token);
       setMessage(response.data.message);
       setError(false);
@@ -95,9 +92,9 @@ const Login = (props) => {
                 //   dispatch(reset(email));
                   // dispatch(forgotPassword(email));
 
-                  toast.info('Email is being Verified', {
+                  toast.dark('Email is being Verified', {
                     position: 'top-right',
-                    autoClose: 5000,
+                    autoClose: 1000,
                     hideProgressBar: true,
                     closeOnClick: true,
                     pauseOnHover: true,

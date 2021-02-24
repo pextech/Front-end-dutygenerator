@@ -5,10 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #553055;
+  background-image: url('./pic1.jpg');
 }
 .App{
-  background: #4c2a4c;
+  background: #ffffff;
   margin: 20px auto;
   width: 90%;
   max-width: 700px;
@@ -17,7 +17,7 @@ body {
 .navbar{
   padding: 10px 20px;
   text-align: center;
-  background: #6d3d6d
+  background: #2F3136;
 }
 .navbar h1{
   margin: 10px 0;
@@ -31,7 +31,7 @@ body {
   list-style-type: none;
 }
 .book-list li{
-  background: #6d3d6d;
+  background: #2F3136;
   border-radius: 4px;
   padding: 10px;
   cursor: pointer;
@@ -59,13 +59,13 @@ form{
   padding: 20px;
 }
 
-input[type='text'],input[type='email'],input[type='password']{
+input[type='text'],input[type='email'],input[type='password'],select,textarea{
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
   margin: 6px 0;
   background:transparent;
-  color: #6d3d6d;
+  color: #2F3136;
   border: 0;
 }
 input[name='Album']{
@@ -81,7 +81,7 @@ input[type='submit']{
   margin: 10px auto;
   color: #ddd;
   cursor: pointer;
-  background: #3c1f3c;
+  background: #2F3136;
   border: 0;
   padding: 6px 20px;
   display: block;
@@ -90,8 +90,28 @@ button{
   margin: 10px auto;
   color: #ddd;
   cursor: pointer;
-  background: #3c1f3c;
+  background: #2F3136;
   border: 0;
   padding: 6px 20px;
   display: block;
 }
+/* .Toastify__toast-container {
+  z-index: 9999;
+  -webkit-transform: translate3d(0, 0, 9999px);
+  position: fixed;
+  padding: 4px;
+  width: 320px;
+  height: 740px;
+  box-sizing: border-box;
+  color: #fff;
+}
+.Toastify__toast-body {
+  margin: auto 0;
+  padding: 20px;
+  margin: 20px;
+}
+.Toastify__toast--dark {
+  background: #37393F;
+  color: #fff;
+  height: 400px;
+} */

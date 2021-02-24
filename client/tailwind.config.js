@@ -8,8 +8,8 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          100: '#6d3d6d',
-          200: '#3c1f3c',
+          100: '#2F3136',
+          200: '#37393F',
         },
         secondary: {
           100: '#333',
@@ -22,4 +22,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};
