@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/dutygenerator/static/css/main.1ba0f665.chunk.css",
-    "main.js": "/dutygenerator/static/js/main.f7a9f097.chunk.js",
-    "main.js.map": "/dutygenerator/static/js/main.f7a9f097.chunk.js.map",
-    "runtime-main.js": "/dutygenerator/static/js/runtime-main.30288ed9.js",
-    "runtime-main.js.map": "/dutygenerator/static/js/runtime-main.30288ed9.js.map",
-    "static/css/2.c08fb880.chunk.css": "/dutygenerator/static/css/2.c08fb880.chunk.css",
-    "static/js/2.50018018.chunk.js": "/dutygenerator/static/js/2.50018018.chunk.js",
-    "static/js/2.50018018.chunk.js.map": "/dutygenerator/static/js/2.50018018.chunk.js.map",
-    "index.html": "/dutygenerator/index.html",
-    "static/css/2.c08fb880.chunk.css.map": "/dutygenerator/static/css/2.c08fb880.chunk.css.map",
-    "static/css/main.1ba0f665.chunk.css.map": "/dutygenerator/static/css/main.1ba0f665.chunk.css.map",
-    "static/js/2.50018018.chunk.js.LICENSE.txt": "/dutygenerator/static/js/2.50018018.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/dutygenerator/static/media/pic1.ac0c8b27.jpg"
+    "main.css": "/Front-end-dutygenerator/static/css/main.5d63d27d.chunk.css",
+    "main.js": "/Front-end-dutygenerator/static/js/main.f7a9f097.chunk.js",
+    "main.js.map": "/Front-end-dutygenerator/static/js/main.f7a9f097.chunk.js.map",
+    "runtime-main.js": "/Front-end-dutygenerator/static/js/runtime-main.57a293a4.js",
+    "runtime-main.js.map": "/Front-end-dutygenerator/static/js/runtime-main.57a293a4.js.map",
+    "static/css/2.c08fb880.chunk.css": "/Front-end-dutygenerator/static/css/2.c08fb880.chunk.css",
+    "static/js/2.50018018.chunk.js": "/Front-end-dutygenerator/static/js/2.50018018.chunk.js",
+    "static/js/2.50018018.chunk.js.map": "/Front-end-dutygenerator/static/js/2.50018018.chunk.js.map",
+    "index.html": "/Front-end-dutygenerator/index.html",
+    "static/css/2.c08fb880.chunk.css.map": "/Front-end-dutygenerator/static/css/2.c08fb880.chunk.css.map",
+    "static/css/main.5d63d27d.chunk.css.map": "/Front-end-dutygenerator/static/css/main.5d63d27d.chunk.css.map",
+    "static/js/2.50018018.chunk.js.LICENSE.txt": "/Front-end-dutygenerator/static/js/2.50018018.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/Front-end-dutygenerator/static/media/pic1.ac0c8b27.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.30288ed9.js",
+    "static/js/runtime-main.57a293a4.js",
     "static/css/2.c08fb880.chunk.css",
     "static/js/2.50018018.chunk.js",
-    "static/css/main.1ba0f665.chunk.css",
+    "static/css/main.5d63d27d.chunk.css",
     "static/js/main.f7a9f097.chunk.js"
   ]
 }
